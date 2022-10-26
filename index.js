@@ -1,23 +1,17 @@
-import express from "express";
+import express, { Router } from "express";
 import dbConnection from "./configs/db.js";
-import * as dotenv from "dotenv";
-dotenv.config();
-
+import goalRoutes from "./routes/goalRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 const app = express();
+dbConnection();
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get("/signin", (req, res) => {
-  res.send(signin);
-});
+app.use("/api/v1/goals", goalRoutes);
 
-app.get("/register", (req, res) => {
-  res.send(register);
-});
+app.use("/api/v1/users", userRoutes);
 
 app.listen(process.env.PORT || 4200, () => {
-  dbConnection();
   console.log("server has started");
 });

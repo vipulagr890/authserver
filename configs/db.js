@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const dbConnection = () => {
-  const mongoDB = `mongodb+srv://${userName}:${password}@${cluster}.${dbName}.mongodb.net/?retryWrites=true&w=majority`;
+  const mongoDB = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.CLUSTER}.${process.env.DBNAME}.mongodb.net/?retryWrites=true&w=majority`;
   mongoose.connect(mongoDB, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
   });
 
   // Get the default connection

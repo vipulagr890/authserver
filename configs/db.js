@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 
-const userName = "Vipul";
-const password = "EivPzRzTFjPojzR6";
-const cluster = "cluster0";
-const dbName = "drmyqe6";
-
 const dbConnection = () => {
   const mongoDB = `mongodb+srv://${userName}:${password}@${cluster}.${dbName}.mongodb.net/?retryWrites=true&w=majority`;
   mongoose.connect(mongoDB, {
